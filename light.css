@@ -1,0 +1,228 @@
+special {
+    color: #4F46E5;
+    font-family: "Golos Text", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
+}
+html {
+    scroll-behavior: smooth;
+}
+head h1 {
+    color: #4F46E5;
+    font-family: "Golos Text", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
+}
+h1 {
+    color: #1F2937;
+    font-family: "Golos Text", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
+}
+#head2 {
+    color: #1F2937;
+    font-family: "Golos Text", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
+    font-size: 24px !important;
+}
+body {
+    background-color: #F5F7FA;
+    color: #1F2937;
+}
+p{
+    font-size: 28px;
+    font-family: "Golos Text", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1.6;
+}
+table {
+    font-family: "Golos Text", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1.6;
+    width: 100%;
+    max-width: 100%;
+}
+th {
+    color: #4F46E5;
+    border: 1px solid #dddddd;
+}
+td {
+    border: 1px solid #dddddd;
+}
+a {
+    color: #4F46E5;
+    text-decoration: none;
+    font-family: "Golos Text", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+#messages {
+    border: 1px solid #E5E7EB;
+    border-radius: 20px;
+    padding: 20px;
+    background-color: #FFFFFF;
+    max-width: 900px;
+    margin: auto;
+}
+#ot {
+    border: 1px solid #E5E7EB;
+    border-radius: 20px;
+    padding: 20px;
+    background-color: #FFFFFF;
+    max-width: 900px;
+    margin: auto;
+}
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+label {
+    display: flex;
+    flex-direction: column;
+    font-weight: 600;
+    font-size: 28px;
+    font-family: "Golos Text", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1.6;
+}
+input,
+select,
+textarea {
+    margin-top: 6px;
+    padding: 12px;
+    font-family: "Golos Text", sans-serif;
+    font-size: 16px;
+    border-radius: 12px;
+    border: 1px solid #D1D5DB;
+    background-color: #FFFFFF;
+}
+textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+input:hover{
+    background-color: #4F46E5;
+    color: white;
+    transition-duration: 0.35s;
+}
+#navbar {
+    display: flex;
+    flex-direction: row;
+}
+#navb {
+    display: flex;
+    flex-direction: row;
+    border: 1px solid #E5E7EB;
+    color: #E5E7EB;
+    background-color: #4F46E5;
+    border-radius: 10px;
+    padding: 10px;
+}
+#navb:hover {
+    border: 1px solid #4F46E5;
+    color: #4F46E5;
+    background-color: #E5E7EB;
+    transition-duration: 0.35s;
+}
+#boxes {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+#creditbar {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+#ibox {
+    margin-right: 10px;
+    border: 1px solid #4F46E5;
+    background-color:  #4F46E5;
+    width: 25%;
+    font-weight: 600;
+    font-size: 26px;
+    font-family: "Golos Text", sans-serif;
+    font-optical-sizing: auto;
+    border-radius: 10px;
+    padding: 5px;
+    text-align: center;
+}
+#ibox h1 {
+    border: 1px solid #4F46E5;
+    color: #E5E7EB  !important;
+    background-color: #4F46E5;
+    font-weight: 600;
+    font-size: 26px;
+    font-family: "Golos Text", sans-serif;
+    font-optical-sizing: auto;
+    border-radius: 10px;
+}
+#rbox {
+    margin-right: 10px;
+    border: 1px solid #f43c3c;
+    background-color:  #f43c3c;
+    width: 25%;
+    font-weight: 600;
+    font-size: 26px;
+    font-family: "Golos Text", sans-serif;
+    font-optical-sizing: auto;
+    border-radius: 10px;
+    padding: 5px;
+    text-align: center;
+}
+#rbox h1 {
+    border: 1px solid #f43c3c;
+    color: #E5E7EB  !important;
+    background-color: #f43c3c;
+    font-weight: 600;
+    font-size: 26px;
+    font-family: "Golos Text", sans-serif;
+    font-optical-sizing: auto;
+    border-radius: 10px;
+}
+#gbox {
+    margin-right: 10px;
+    border: 1px solid #2fc240;
+    background-color:  #2fc240;
+    width: 25%;
+    font-weight: 600;
+    font-size: 26px;
+    font-family: "Golos Text", sans-serif;
+    font-optical-sizing: auto;
+    border-radius: 10px;
+    padding: 5px;
+    text-align: center;
+}
+#gbox h1 {
+    border: 1px solid #2fc240;
+    color: #E5E7EB  !important;
+    background-color: #2fc240;
+    font-weight: 600;
+    font-size: 26px;
+    font-family: "Golos Text", sans-serif;
+    font-optical-sizing: auto;
+    border-radius: 10px;
+}
