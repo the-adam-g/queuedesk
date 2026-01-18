@@ -50,5 +50,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <input type="submit" id="verify" value="Verify" name="verify">
         </form>
     </section>
-    <br></br> 
+    <br> 
 </body>

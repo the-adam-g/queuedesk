@@ -51,5 +51,5 @@ if (isset($_SESSION['veruac'])) {
         echo '</table>';
         ?>
     </section>
-    <br></br> 
+    <br> 
 </body>

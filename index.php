@@ -32,9 +32,9 @@ if (isset($_SESSION['user_id'])) {
     <section id="messages">
         <h1>What is Queue<special>Desk</special> ?</h1>
         <hr>
-        <p>Queue<special>Desk</special> is an intuitive ticket management software designed to be intuitive and easy to use for new and experienced IT technicians</p>
+        <p>Queue<special>Desk</special> is a lightweight ticket management system designed to be easy to use for both new and experienced IT technicians.</p>
     </section>
-    <br></br> 
+    <br> 
     <section id="messages">
         <a href="login.php"><p>Login/Register as staff</p></a>
         <p></p>

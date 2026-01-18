@@ -106,7 +106,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <input type="submit" id="register" value="Register" name="register">
         </form>
     </section>
-    <br></br> 
+    <br> 
     <section id="messages">
         <h1><special>Login to QueueDesk as Staff.</special></h1>
          <form action="" method="post">

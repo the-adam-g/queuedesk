@@ -76,5 +76,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
         ?>
     </section>
-    <br></br> 
+    <br> 
 </body>

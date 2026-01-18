@@ -39,5 +39,5 @@ $uac = htmlspecialchars($uac, ENT_QUOTES, 'UTF-8');
         echo "<h1><a href='/myticket.php?uac=" . urlencode($uac) . "'>" . $_SERVER['SERVER_NAME'], $myticket . "</a></h1>";
         ?>
     </section>
-    <br></br> 
+    <br> 
 </body>

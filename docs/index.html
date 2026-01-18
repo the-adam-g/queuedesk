@@ -1,4 +1,122 @@
-<h1>QueueDesk</h1>
-<p>Ticket Management System</p>
-<p>Under Construction!</p>
-<img src="uc.jpg">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QueueDesk</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="../light.css">
+    <meta property="og:title" content="QueueDesk">
+    <meta property="og:description" content="QueueDesk. IT made simple.">
+    <meta property="og:image" content="idkyet">
+    <meta property="og:url" content="http://librebook.co.uk/QueueDesk/">
+    <meta property="og:type" content="website">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400..900&display=swap" rel="stylesheet">
+    <style>
+        #messages {
+            margin-bottom: 15px;
+        }
+        img {
+            max-width: 100%;
+            border-radius: 15px;
+        }
+    </style>
+</head>
+<body>
+    <section id="head">
+        <h1>Queue<special>Desk</special> - IT made <special>simple</special>.</h1>
+    </section>
+    <section id="messages">
+        <h1>What is Queue<special>Desk</special> ?</h1>
+        <hr>
+        <p>Queue<special>Desk</special> is a lightweight ticket management system designed to be easy to use for both new and experienced IT technicians.</p>
+    </section>
+    <br> 
+    <section id="messages">
+        <h1>What are some Queue<special>Desk</special> features ?</h1>
+    </section>
+    <section id="messages">
+        <h1><special>Simple</special> Ticket Creation</h1>
+        <p>Users can create tickets without accounts using a secure POST-based form with server-side validation. Users are presented with a form where they enter their name, email, details as well as the type of issue and urgency both from a dropdown list.</p>
+        <img src="sc/ticket.png">
+    </section>
+    <section id="messages">
+        <h1>Customer Accounts Are <special>Not Required</special></h1>
+        <p>Upon ticket creation, users are presented a URL with their <special>UAC</special> (Unique Access Code) integrated into the link. Upon going to the link, users will be prompted to enter their <special>email</special> used in their ticket to access their ticket details to prevent hackers and any data leaks.</p>
+        <img src="sc/thankyou.png">
+    </section>
+    <section id="messages">
+        <h1><special>UAC</special> - Unique Access Token</h1>
+        <p>Each ticket is protected by a cryptographically secure <special>UAC</special> generated using the PHP function <code>random_bytes()</code> which is a PRNG (Pseudorandom number generator) that generates a 16 byte random code unique to each user allowing them to access their ticket details. QueueDesk ensures that no open ticket will have the same UAC.</p>
+    </section>
+    <section id="messages">
+        <h1>Email-Based <special>Verification</special></h1>
+        <p>Upon attempting to view their ticket details using their<special> UAC</special>, ownership is verified server-side by matching the submitted <special>email</special> against stored ticket data.</p>
+        <img src="sc/verify.png">
+    </section> 
+    <section id="messages">
+        <h1><special>Automatic</special> Ticket Assignment</h1>
+        <p>Tickets are dynamically assigned to the technician with the lowest current ticket count. This ensures an <special>equal</special> amount of tickets assigned to each staff member.</p>
+    </section>
+    <section id="messages">
+        <h1>Session-<special>Protected</special> Ticket Viewing</h1>
+        <p>Verified users are granted access via PHP sessions, <special>preventing</special> unauthorised direct access <special>protecting</special> customer security and data.</p>
+    </section>
+    <section id="messages">
+        <h1><special>Secure</special> Admin Actions</h1>
+        <p>Session validation and <special>CSRF-safe</special> request handling prevent forged or unintended actions such as preventing an admin accidentally using a malicious form designed to delete tickets.</p>
+    </section>
+    <section id="messages">
+        <h1>Protection Against Common Attacks</h1>
+        <p>Prepared SQL statements (PDO) <special>prevent threats</special> like SQL injection combined with output escaping <special>protection</special> to protect against XSS (Cross-site scripting).</p>
+    </section>
+    <section id="messages">
+        <h1><special>Clear</special> Ticket Overview</h1>
+        <p>The <special>simplified</special> dashboard displays key information including the ticket's <special>ID, timestamp, assignee, urgency, and full user written details about the issue</special>.</p>
+    </section>
+    <section id="messages">
+        <h1><special>Privacy-Respecting</special> Design</h1>
+        <p><special>No</special> unnecessary tracking, <special>no</special> customer profiles, and <special>only the essential</special> data is stored.</p>
+    </section>
+    <section id="messages">
+        <h1>Fast & <special>Lightweight</special></h1>
+        <p><special>Minimal</special> dependencies and no heavy frameworks allow Queue<special>Desk</special> to run <special>efficiently</special> on small servers.</p>
+    </section>
+    <section id="messages">
+        <h1>Fully <special>Self-Hosted</special></h1>
+        <p>Runs on standard PHP hosting with <special>no</special> third-party services reliance or vendor lock-in giving you the ability to <special>control your data</special> and service without paying a penny. However, in the <special>future</special> a <special>SaaS</special> version may be offered to accommodate those without the hardware.</p>
+    </section>
+    <section id="messages">
+        <h1><special>View</special> </h1>
+        <p>The Queue<special>Desk</special> administrator dashboard allows for <special>simple</special> monitoring of your team's effiency and metrics with handling tickets</p>
+        <img src="sc/adminpage-b.png">
+        <img src="sc/adminpage-s.png">
+   </section>
+   <section id="messages">
+        <h1><special>Migrate</special></h1>
+        <p>The Queue<special>Desk</special> administrator dashboard allows for <special>simple</special> monitoring of your team's efficiency and metrics with handling tickets</p>
+        <img src="sc/migrate.png">
+   </section>
+   <section id="messages">
+        <h1><special>Manage</special></h1>
+        <p>The Queue<special>Desk</special> administrator dashboard allows for <special>simple</special> migration of your team's current tickets allowing for you to reassign tickets to other staff members when necessary.</p>
+        <img src="sc/open.png">
+   </section>
+   <section id="messages">
+        <h1><special>Export</special></h1>
+        <p>The Queue<special>Desk</special> administrator dashboard allows for you to <special>export</special> the metrics of your team to a .CSV format for <special>simplified data analysis</special></p>
+        <img src="sc/export.png">
+   </section>
+   <section id="messages">
+        <h1><special>Visualise</special></h1>
+        <p>The Queue<special>Desk</special> administrator dashboard allows for you to <special>visualise</special> the metrics of your team to a .CSV format for <special>simplified data analysis</special> using the chart.js functionality without needing to make any external calls for <special>independence</special> and <special>security</special>.</p>
+        <img src="sc/visual.png">
+   </section>
+    <br><br>
+    <div id="creditbar">
+        <p>Queue<special>Desk</special> was created by Adam Gillion</p>
+        <p><special>Contact</special> with any enquiry at <special>admin@queuedesk.org</special></p>
+    </div>
+</body>

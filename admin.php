@@ -159,7 +159,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         ?>
         </table>
     </section>
-    <br></br> 
+    <br> 
     <section id="messages">
         <h1><special>Migrate</special> Tickets</h1>
         <table>
@@ -190,7 +190,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         ?>
         </table>
     </section>
-    <br></br>
+    <br>
     <section id="ot">
     <h1><special>Open</special> Tickets</h1>
         <table>
@@ -214,7 +214,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             ?>
         </table>
     </section>
-    <br></br> 
+    <br> 
     <section id="messages">
         <h1><special>Export</special> Your Data As <special>.CSV</special></h1>
         <?php
@@ -241,5 +241,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo "</form>";
         ?>
     </section>
-    <br></br> 
+    <br> 
 </body>

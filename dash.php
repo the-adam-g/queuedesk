@@ -77,5 +77,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         ?>
         </table>
     </section>
-    <br></br> 
+    <br> 
 </body>

@@ -82,5 +82,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <input type="submit" id="createticket" value="Create Ticket">
         </form>
     </section>
-    <br></br> 
+    <br> 
 </body>
