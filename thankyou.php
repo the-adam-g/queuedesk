@@ -24,6 +24,33 @@ $uac = htmlspecialchars($uac, ENT_QUOTES, 'UTF-8');
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400..900&display=swap" rel="stylesheet">
+    <style>
+    img {
+        margin-left: auto;
+        margin-right: auto;
+    }
+    #underlineme {
+        position: relative;
+        display: inline-block;
+    }
+    #underlineme::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -6px;
+        width: 100%;
+        height: 2px;
+        background-color: #4F46E5;
+        transform: scaleX(0);
+        transform-origin: left;
+        animation: underline-in 0.6s ease forwards;
+    }
+    @keyframes underline-in {
+        to {
+            transform: scaleX(1);
+        }
+    }
+    </style>
 </head>
 <body>
     <section id="head">
@@ -31,13 +58,20 @@ $uac = htmlspecialchars($uac, ENT_QUOTES, 'UTF-8');
     </section>
     <section id="messages">
         <h1>Your Queue<special>Desk</special> ticket has been successfully created!</h1>
-        <p>Thank you for using Queue<special>Desk</special></p>
+        <p id="underlineme">Thank you for using Queue<special>Desk</special></p>
         <p>Queue<special>Desk</special> advises that you do not share your UAC and is not responsible for any repurcussions of a shared UAC.</p>
         <?php 
+        $userurl = "https://" . $_SERVER['HTTP_HOST'] . $myticket;
         echo "<h1>Your Unique Access Code is: " . htmlspecialchars($uac, ENT_QUOTES, 'UTF-8');
         echo "<h1>You can view the progress of your ticket at the following URL: </h1>";
-        echo "<h1><a href='/myticket.php?uac=" . urlencode($uac) . "'>" . $_SERVER['SERVER_NAME'], $myticket . "</a></h1>";
+        echo "<h1><a href='/myticket.php?uac=" . urlencode($uac) . "'>" . $userurl  . "</a></h1>";
         ?>
+        <h1>QR code to your ticket details:</h1>
+        <div id="qrcode"></div>
+        <script src="qrcode.min.js"></script>
+        <script>
+            new QRCode(document.getElementById("qrcode"),  "<?php echo $userurl;?>");
+        </script>
     </section>
     <br> 
 </body>
