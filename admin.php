@@ -196,8 +196,8 @@ if ($page < 1) {
         <h1><special>Open</special> Tickets</h1>
         <div id="navbar">
             <a id="navb" href="admin.php?page=1">First page</a>
-            <a id="navb" href="admin.php?page=<?php echo ($page + 1); ?>">Next page</a>
             <a id="navb" href="admin.php?page=<?php echo ($page - 1); ?>">Prior page</a>
+            <a id="navb" href="admin.php?page=<?php echo ($page + 1); ?>">Next page</a>
         </div>
         <p><?php echo "Page: <special>" . $page;?></special></p>
         <table>
@@ -229,8 +229,8 @@ if ($page < 1) {
         <h1><special>Closed</special> Tickets</h1>
         <div id="navbar">
             <a id="navb" href="admin.php?page=1">First page</a>
-            <a id="navb" href="admin.php?page=<?php echo ($page + 1); ?>">Next page</a>
             <a id="navb" href="admin.php?page=<?php echo ($page - 1); ?>">Prior page</a>
+            <a id="navb" href="admin.php?page=<?php echo ($page + 1); ?>">Next page</a>
         </div>
         <p><?php echo "Page: <special>" . $page;?></special></p>
         <table>
