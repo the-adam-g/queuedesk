@@ -11,6 +11,8 @@ define('ALLOW_REGISTRATION', true);
 define('MAX_ATTEMPTS', 5);
 define('LOCK_TIME', 300); // 5 mins by default
 define('INACTIVITY_LIMIT', 1800); // 30 mins by default
+define('OFFSET', 10); //how large the offset is in the pages of tickets in admin panel
+define('LIMIT', 10); //how many tickets are loaded in the pages
 
 try {
     $pdo = new PDO("mysql:host=$db_host;dbname=$db_name", $db_user, $db_password);

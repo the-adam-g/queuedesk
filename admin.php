@@ -58,6 +58,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 
+$page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+$page = max(1, $page);
+if ($page < 1) {
+    header('Location: admin.php?page=1');
+    exit;
+}
 
 ?>
 <!DOCTYPE html>
@@ -116,11 +122,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 ?>
             </div>
         </div>
-        <?php
-        $stmt = $pdo->prepare('SELECT * FROM tickets ORDER BY timestamp DESC');
-        $stmt->execute();
-        $tickets = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        ?>
         <p>Admins:</p>
         <table>
         <tr>
@@ -139,7 +140,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
         ?>
         </table>
-        <p>Users:</p>
+        <p>Technicians:</p>
         <table>
         <tr>
             <th>ID</th>
@@ -192,7 +193,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </section>
     <br>
     <section id="ot">
-    <h1><special>Open</special> Tickets</h1>
+        <h1><special>Open</special> Tickets</h1>
+        <div id="navbar">
+            <a id="navb" href="admin.php?page=1">First page</a>
+            <a id="navb" href="admin.php?page=<?php echo ($page + 1); ?>">Next page</a>
+            <a id="navb" href="admin.php?page=<?php echo ($page - 1); ?>">Prior page</a>
+        </div>
+        <p><?php echo "Page: <special>" . $page;?></special></p>
         <table>
             <tr>
                 <th>ID</th>
@@ -205,7 +212,43 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <th>MANAGE</th>
             </tr>
             <?php
-            $stmt3 = $pdo->prepare('SELECT * FROM tickets ORDER BY timestamp DESC limit 10');
+            $offset = ($page - 1) * OFFSET;
+            $stmt3 = $pdo->prepare('SELECT * FROM tickets ORDER BY timestamp DESC limit :rlimit OFFSET :offset');
+            $stmt3->bindValue(':rlimit', LIMIT, PDO::PARAM_INT);
+            $stmt3->bindValue(':offset', $offset, PDO::PARAM_INT);
+            $stmt3->execute();
+            $tickets = $stmt3->fetchAll(PDO::FETCH_ASSOC);
+            foreach ($tickets as $ticket) {
+                echo("<tr>" . "<td>". $ticket['id'] . "</td><td>". $ticket['timestamp'] . "</td><td>". htmlspecialchars($ticket['creator'], ENT_QUOTES, 'UTF-8') . "</td><td>". htmlspecialchars($ticket['email'], ENT_QUOTES, 'UTF-8') . "</td><td>". htmlspecialchars($ticket['type'], ENT_QUOTES, 'UTF-8') . "</td><td>". htmlspecialchars($ticket['details'], ENT_QUOTES, 'UTF-8') . "</td><td>". htmlspecialchars($ticket['urgency'], ENT_QUOTES, 'UTF-8') . "</td><td>". "<form action='' method='POST'><input type='hidden' name='csrf' value=" . $_SESSION['csrf'] . "><input type='hidden' name='id' value='" . (int)$ticket['id'] .  "'/><input type='submit' name='close' value='Close ticket'></form></tr>");
+            }
+            ?>
+        </table>
+    </section>
+    <br> 
+    <section id="messages">
+        <h1><special>Closed</special> Tickets</h1>
+        <div id="navbar">
+            <a id="navb" href="admin.php?page=1">First page</a>
+            <a id="navb" href="admin.php?page=<?php echo ($page + 1); ?>">Next page</a>
+            <a id="navb" href="admin.php?page=<?php echo ($page - 1); ?>">Prior page</a>
+        </div>
+        <p><?php echo "Page: <special>" . $page;?></special></p>
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>TIMESTAMP</th>
+                <th>CREATOR</th>
+                <th>EMAIL</th>
+                <th>TYPE</th>
+                <th>DETAILS</th>
+                <th>URGENCY</th>
+                <th>MANAGE</th>
+            </tr>
+            <?php
+            $offset = ($page - 1) * OFFSET;
+            $stmt3 = $pdo->prepare('SELECT * FROM past_tickets ORDER BY timestamp DESC limit :rlimit OFFSET :offset');
+            $stmt3->bindValue(':rlimit', LIMIT, PDO::PARAM_INT);
+            $stmt3->bindValue(':offset', $offset, PDO::PARAM_INT);
             $stmt3->execute();
             $tickets = $stmt3->fetchAll(PDO::FETCH_ASSOC);
             foreach ($tickets as $ticket) {
