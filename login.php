@@ -1,6 +1,4 @@
 <?php
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
 include 'config.php';
 session_start();
 
@@ -31,10 +29,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     $hashed = password_hash($pass, PASSWORD_DEFAULT);
                     $stmt = $pdo->prepare('INSERT INTO users (username, password, role) VALUES (?, ?, ?)');
                     $stmt->execute([$name, $hashed, $role]);
+                    $stmt = $pdo->prepare('SELECT * FROM users WHERE username = ?');
+                    $stmt->execute([$name]);
+                    $user = $stmt->fetch(PDO::FETCH_ASSOC);
                     $_SESSION['login'] = true;
                     $_SESSION['name'] = $name;
                     $_SESSION['user_id'] = $user['id'];
-                    $_SESSION['role'] = $user['role'];
+                    $_SESSION['role'] = $role;
                     $_SESSION['csrf'] = bin2hex(random_bytes(32));
                     header('Location: dash.php');
                     exit();
@@ -43,10 +44,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     $hashed = password_hash($pass, PASSWORD_DEFAULT);
                     $stmt = $pdo->prepare('INSERT INTO users (username, password, role) VALUES (?, ?, ?)');
                     $stmt->execute([$name, $hashed, $role]);
+                    $stmt = $pdo->prepare('SELECT * FROM users WHERE username = ?');
+                    $stmt->execute([$name]);
+                    $user = $stmt->fetch(PDO::FETCH_ASSOC);
                     $_SESSION['login'] = true;
                     $_SESSION['name'] = $name;
                     $_SESSION['user_id'] = $user['id'];
-                    $_SESSION['role'] = $user['role'];
+                    $_SESSION['role'] = $role;
                     $_SESSION['csrf'] = bin2hex(random_bytes(32));
                     header('Location: dash.php');
                     exit();
