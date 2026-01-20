@@ -102,7 +102,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <label>Your name: </label><input type="text" name="name" required>
             <label>Your password: </label><input type="password" name="pass" required>
             <label>Authorisation password: </label><input type="password" name="auth" required>
-            <label>Admin only password: </label><input type="password" name="admin">
+            <label>Admin registration password: </label><input type="password" name="admin">
             <input type="submit" id="register" value="Register" name="register">
         </form>
     </section>
