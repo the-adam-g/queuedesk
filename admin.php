@@ -1,3 +1,4 @@
+
 <?php
 session_start();
 include "config.php";
@@ -72,12 +73,35 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 
-$page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
-$page = max(1, $page);
-if ($page < 1) {
-    header('Location: admin.php?page=1');
-    exit;
+if (isset($_GET['opage'])) {
+    $opage = (int)$_GET['opage'];
+    if ($opage < 1) {
+        $params = $_GET;
+        $params['opage'] = 1;
+        header("Location: admin.php?" . http_build_query($params));
+        exit;
+    }
+} else {
+    $opage = 1;
 }
+
+if (isset($_GET['cpage'])) {
+    $cpage = (int)$_GET['cpage'];
+    if ($cpage < 1) {
+        $params = $_GET;
+        $params['cpage'] = 1;
+        header("Location: admin.php?" . http_build_query($params));
+        exit;
+    }
+} else {
+    $cpage = 1;
+}
+function paging($key, $value) {
+    $params = $_GET;
+    $params[$key] = $value;
+    return 'admin.php?' . http_build_query($params);
+}
+
 
 ?>
 <!DOCTYPE html>
@@ -209,11 +233,11 @@ if ($page < 1) {
     <section id="ot">
         <h1><special>Open</special> Tickets</h1>
         <div id="navbar">
-            <a id="navb" href="admin.php?page=1">First page</a>
-            <a id="navb" href="admin.php?page=<?php echo ($page - 1); ?>">Prior page</a>
-            <a id="navb" href="admin.php?page=<?php echo ($page + 1); ?>">Next page</a>
+            <a id="navb" href="<?php echo paging('opage', 1);?>">First page</a>
+            <a id="navb" href="<?php echo paging('opage', ($opage - 1));?>">Prior page</a>
+            <a id="navb"href="<?php echo paging('opage', ($opage + 1));?>">Next page</a>
         </div>
-        <p><?php echo "Page: <special>" . $page;?></special></p>
+        <p><?php echo "Page: <special>" . $opage;?></special></p>
         <table>
             <tr>
                 <th>ID</th>
@@ -226,10 +250,10 @@ if ($page < 1) {
                 <th>MANAGE</th>
             </tr>
             <?php
-            $offset = ($page - 1) * OFFSET;
+            $ooffset = ($opage - 1) * OFFSET;
             $stmt3 = $pdo->prepare('SELECT * FROM tickets ORDER BY timestamp DESC limit :rlimit OFFSET :offset');
             $stmt3->bindValue(':rlimit', LIMIT, PDO::PARAM_INT);
-            $stmt3->bindValue(':offset', $offset, PDO::PARAM_INT);
+            $stmt3->bindValue(':offset', $ooffset, PDO::PARAM_INT);
             $stmt3->execute();
             $tickets = $stmt3->fetchAll(PDO::FETCH_ASSOC);
             foreach ($tickets as $ticket) {
@@ -241,12 +265,11 @@ if ($page < 1) {
     <br> 
     <section id="messages">
         <h1><special>Closed</special> Tickets</h1>
-        <div id="navbar">
-            <a id="navb" href="admin.php?page=1">First page</a>
-            <a id="navb" href="admin.php?page=<?php echo ($page - 1); ?>">Prior page</a>
-            <a id="navb" href="admin.php?page=<?php echo ($page + 1); ?>">Next page</a>
-        </div>
-        <p><?php echo "Page: <special>" . $page;?></special></p>
+        <div id="navbar">            
+            <a id="navb" href="<?php echo paging('cpage', 1);?>">First page</a>
+            <a id="navb" href="<?php echo paging('cpage', ($cpage - 1));?>">Prior page</a>
+            <a id="navb"href="<?php echo paging('cpage', ($cpage + 1));?>">Next page</a> </div>
+        <p><?php echo "Page: <special>" . $cpage;?></special></p>
         <table>
             <tr>
                 <th>ID</th>
@@ -259,10 +282,10 @@ if ($page < 1) {
                 <th>MANAGE</th>
             </tr>
             <?php
-            $offset = ($page - 1) * OFFSET;
+            $coffset = ($cpage - 1) * OFFSET;
             $stmt3 = $pdo->prepare('SELECT * FROM past_tickets ORDER BY timestamp DESC limit :rlimit OFFSET :offset');
             $stmt3->bindValue(':rlimit', LIMIT, PDO::PARAM_INT);
-            $stmt3->bindValue(':offset', $offset, PDO::PARAM_INT);
+            $stmt3->bindValue(':offset', $coffset, PDO::PARAM_INT);
             $stmt3->execute();
             $tickets = $stmt3->fetchAll(PDO::FETCH_ASSOC);
             foreach ($tickets as $ticket) {
