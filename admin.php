@@ -56,6 +56,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         header("Location: admin.php");
         exit;
     }
+    if (isset($_POST['reopen'])) {
+        if(!hash_equals($_SESSION['csrf'], $_POST['csrf'])) { 
+            die ("<link rel='stylesheet' href='light.css'> <h1>Queue<special>Desk</special> <special style='color:red;'>Error Handler</special></h1><h1>Fatal request - CSRF Violation <br><special style='color:red;'> Error code: (#b1)</special></h1><a id='navb' style='max-width: 10%;' href='dash.php'>Return</a>");
+        }
+        $ticketid = $_POST["id"];
+        $stmt = $pdo->prepare('INSERT INTO tickets SELECT * FROM past_tickets WHERE id = ?');
+        $stmt->execute([$ticketid]);
+        $stmt3 = $pdo->prepare('UPDATE users SET solved = solved - 1 WHERE username = ?');
+        $stmt3->execute([$name]);
+        $stmt2 = $pdo->prepare('DELETE FROM tickets WHERE id = ?');
+        $stmt2->execute([$ticketid]);
+        header("Location: admin.php");
+        exit;
+    }
 }
 
 $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
@@ -252,7 +266,7 @@ if ($page < 1) {
             $stmt3->execute();
             $tickets = $stmt3->fetchAll(PDO::FETCH_ASSOC);
             foreach ($tickets as $ticket) {
-                echo("<tr>" . "<td>". $ticket['id'] . "</td><td>". $ticket['timestamp'] . "</td><td>". htmlspecialchars($ticket['creator'], ENT_QUOTES, 'UTF-8') . "</td><td>". htmlspecialchars($ticket['email'], ENT_QUOTES, 'UTF-8') . "</td><td>". htmlspecialchars($ticket['type'], ENT_QUOTES, 'UTF-8') . "</td><td>". htmlspecialchars($ticket['details'], ENT_QUOTES, 'UTF-8') . "</td><td>". htmlspecialchars($ticket['urgency'], ENT_QUOTES, 'UTF-8') . "</td><td>". "<form action='' method='POST'><input type='hidden' name='csrf' value=" . $_SESSION['csrf'] . "><input type='hidden' name='id' value='" . (int)$ticket['id'] .  "'/><input type='submit' name='close' value='Close ticket'></form></tr>");
+                echo("<tr>" . "<td>". $ticket['id'] . "</td><td>". $ticket['timestamp'] . "</td><td>". htmlspecialchars($ticket['creator'], ENT_QUOTES, 'UTF-8') . "</td><td>". htmlspecialchars($ticket['email'], ENT_QUOTES, 'UTF-8') . "</td><td>". htmlspecialchars($ticket['type'], ENT_QUOTES, 'UTF-8') . "</td><td>". htmlspecialchars($ticket['details'], ENT_QUOTES, 'UTF-8') . "</td><td>". htmlspecialchars($ticket['urgency'], ENT_QUOTES, 'UTF-8') . "</td><td>". "<form action='' method='POST'><input type='hidden' name='csrf' value=" . $_SESSION['csrf'] . "><input type='hidden' name='id' value='" . (int)$ticket['id'] .  "'/><input type='submit' name='reopen' value='Reopen ticket'></form></tr>");
             }
             ?>
         </table>
