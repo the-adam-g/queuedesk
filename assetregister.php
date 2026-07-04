@@ -120,7 +120,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             echo '
             <div id="container">
             <div id="left">
-            <p>Current Owner: '. htmlspecialchars($asset['owner']) .'</p>
+            <p>Current Possessor: '. htmlspecialchars($asset['owner']) .'</p>
             <p>Item Name: '. htmlspecialchars($asset['name']) .'</p>
             <p>Asset Registrant: '. htmlspecialchars($asset['creator']) .'</p>
             <p>Serial Number: '. htmlspecialchars($asset['serial_num']) .'</p>
@@ -201,7 +201,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <h1>Edit your <ar>Asset</h1>
             <form action="" method="post">
             <div id="navbar" style="margin: auto;">
-                <p style="margin-left: 15px; margin-right: 15px;">Item name: </p><input type="text" name="iname" value="' . htmlspecialchars($asset['name'])  . '" required><p style="margin-left: 15px; margin-right: 15px;">Registrant: </p><input type="text" name="cname" value="' . htmlspecialchars($asset['creator'])  . '" required><p style="margin-left: 15px; margin-right: 15px;">Serial number: </p><input type="text" name="snum" value="' . htmlspecialchars($asset['serial_num'])  . '" required><p style="margin-left: 15px; margin-right: 15px;">Owner: </p><input type="text" name="own" value="' . htmlspecialchars($asset['owner'])  . '" required>
+                <p style="margin-left: 15px; margin-right: 15px;">Item name: </p><input type="text" name="iname" value="' . htmlspecialchars($asset['name'])  . '" required><p style="margin-left: 15px; margin-right: 15px;">Registrant: </p><input type="text" name="cname" value="' . htmlspecialchars($asset['creator'])  . '" required><p style="margin-left: 15px; margin-right: 15px;">Serial number: </p><input type="text" name="snum" value="' . htmlspecialchars($asset['serial_num'])  . '" required><p style="margin-left: 15px; margin-right: 15px;">Possessor: </p><input type="text" name="own" value="' . htmlspecialchars($asset[''])  . '" required>
             </div>
             <div id="navbar" style="margin: auto;">
                 <p style="margin-right: 15px;">Status: </p><select name="status" id="status"><option value="Available" ' . ($asset['status'] === 'Available' ? 'selected' : '') . '>Available</option><option value="In-Use" ' . ($asset['status'] === 'In-Use' ? 'selected' : '') . '>In-Use</option></select><p style="margin-left: 15px; margin-right: 15px;">Additional notes: </p><textarea style="resize: none;" name="notes" rows="1" cols="75">' . htmlspecialchars($asset['notes'])  . '</textarea>
@@ -222,7 +222,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <select name="typesearch" id="typesearch" required>
                 <option value="id">ID</option>
                 <option value="name">Item name</option>
-                <option value="owner">Owner name</option>
+                <option value="owner">Possessor name</option>
                 <option value="creator">Asset creator</option>
                 <option value="serial_num">Serial number</option>
                 <option value="status">Status</option>
@@ -239,7 +239,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <br>
         <form action="" method="post">
             <div id="navbar" style="margin: auto;">
-                <p style="margin-left: 15px; margin-right: 15px;">Item name: </p><input type="text" name="iname" required><p style="margin-left: 15px; margin-right: 15px;">Serial number: </p><input type="text" name="snum" required><p style="margin-left: 15px; margin-right: 15px;">Owner: </p><input type="text" name="own" required>
+                <p style="margin-left: 15px; margin-right: 15px;">Item name: </p><input type="text" name="iname" required><p style="margin-left: 15px; margin-right: 15px;">Serial number: </p><input type="text" name="snum" required><p style="margin-left: 15px; margin-right: 15px;">Possessor: </p><input type="text" name="own" required>
             </div>
             <div id="navbar" style="margin: auto;">
                 <p style="margin-right: 15px;">Status: </p><select name="status" id="status"><option value="Available">Available</option><option value="In-Use">In-Use</option></select><p style="margin-left: 15px; margin-right: 15px;">Additional notes: </p><textarea style="resize: none;" name="notes" rows="1" cols="75"></textarea>
@@ -275,7 +275,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <th>NAME</th>
             <th>SERIAL</th>
             <th>CREATOR</th>
-            <th>OWNER</th>
+            <th>POSSESSOR</th>
             <th>TIMESTAMP</th>
             <th>MANAGE</th>
         </tr>
