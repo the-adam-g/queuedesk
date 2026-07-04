@@ -122,7 +122,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <th>NAME</th>
             <th>SERIAL</th>
             <th>CREATOR</th>
-            <th>OWNER</th>
+            <th>POSSESSOR</th>
             <th>TIMESTAMP</th>
             <th>MANAGE</th>
         </tr>
